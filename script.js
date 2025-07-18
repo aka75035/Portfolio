@@ -1,3 +1,24 @@
+// --- Mobile Menu Toggle ---
+const mobileMenuButton = document.getElementById('mobile-menu-button');
+const mobileMenu = document.getElementById('mobile-menu');
+const hamburgerIcon = document.getElementById('hamburger-icon');
+const closeIcon = document.getElementById('close-icon');
+
+mobileMenuButton.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+    hamburgerIcon.classList.toggle('hidden');
+    closeIcon.classList.toggle('hidden');
+});
+
+// Close mobile menu when a link is clicked
+document.querySelectorAll('#mobile-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        hamburgerIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+    });
+});
+
 // --- Smooth Scrolling ---
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -127,7 +148,10 @@ function init() {
     renderer = new THREE.WebGLRenderer({ canvas: document.getElementById("bg-canvas"), alpha: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     starGeo = new THREE.BufferGeometry();
-    const starCount = 6000;
+    
+    // --- FIX: Responsive particle count ---
+    const starCount = window.innerWidth < 768 ? 1500 : 6000;
+    
     const positions = new Float32Array(starCount * 3);
     for (let i = 0; i < starCount * 3; i++) {
         positions[i] = (Math.random() - 0.5) * 600;
@@ -149,9 +173,17 @@ function onWindowResize() {
 }
 
 function onMouseMove(event) {
+    // Use touch events for mobile if available
+    if (event.touches) {
+    clientX = event.touches[0].clientX;
+    clientY = event.touches[0].clientY;
+    }
     mouseX = event.clientX - window.innerWidth / 2;
     mouseY = event.clientY - window.innerHeight / 2;
 }
+
+// Add touch event listener
+document.addEventListener('touchmove', onMouseMove, false);
 
 function animate() {
     starGeo.attributes.position.array.forEach((_, i) => {
