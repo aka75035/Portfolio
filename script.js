@@ -76,7 +76,7 @@ const sectionObserver = new IntersectionObserver((entries) => {
         if (entry.isIntersecting) {
             const scrollAnimateEl = entry.target.querySelector('.scroll-animate');
             if (scrollAnimateEl) {
-                scrollAnimateEl.classList.add('visible');
+               scrollAnimateEl.classList.add('visible');
             }
             
             if (entry.target.id === 'about') {
@@ -163,6 +163,7 @@ function init() {
     scene.add(stars);
     window.addEventListener("resize", onWindowResize, false);
     document.addEventListener('mousemove', onMouseMove, false);
+    document.addEventListener('touchmove', onMouseMove, false); // Add touch listener
     animate();
 }
 
@@ -173,17 +174,18 @@ function onWindowResize() {
 }
 
 function onMouseMove(event) {
-    // Use touch events for mobile if available
+    // --- FIX: Handle both touch and mouse events correctly ---
+    let clientX, clientY;
     if (event.touches) {
-    clientX = event.touches[0].clientX;
-    clientY = event.touches[0].clientY;
+        clientX = event.touches[0].clientX;
+        clientY = event.touches[0].clientY;
+    } else {
+        clientX = event.clientX;
+        clientY = event.clientY;
     }
-    mouseX = event.clientX - window.innerWidth / 2;
-    mouseY = event.clientY - window.innerHeight / 2;
+    mouseX = clientX - window.innerWidth / 2;
+    mouseY = clientY - window.innerHeight / 2;
 }
-
-// Add touch event listener
-document.addEventListener('touchmove', onMouseMove, false);
 
 function animate() {
     starGeo.attributes.position.array.forEach((_, i) => {
