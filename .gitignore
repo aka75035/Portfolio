@@ -22,3 +22,20 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Build outputs and bundler
+build/
+.vite/
+
+# Local env files
+.env
+.env.local
+
+# Test coverage
+coverage/
+
+# Cache
+.cache/
+
+# OS
+Thumbs.db
