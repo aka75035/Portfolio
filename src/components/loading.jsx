@@ -6,38 +6,35 @@ import { runBoot } from "../utils/Boot";
 import useTypeWriter from "../hooks/useTypeWriter";
 
 function Loader({ onComplete }) {
-//   
-//   const [input, setInput] = useState("");
+
   const { lines, setLines, typeLine } = useTypeWriter();
+
   const [showVisitor, setShowVisitor] = useState(false);
   const [slideUp, setslideUp] = useState(false);
   
-  // 🕒 Time & Date (once)
   const {time, date} = useTimeDate();
 
-  // 📍 Location
   const location = useLocation();
 
-  // ✨ Typing function
-  
+  //Type Writer
   const { input, setInput, handleKeyDown } =
     useTerminal(() => {
-      setslideUp(true); // or breakScreen
+      setslideUp(true);
     }, { lines, setLines });
 
-  // 💻 Boot sequence
+  //RunBoot and Show Screen
   useEffect(() => {
     runBoot(typeLine,setShowVisitor);
   }, []);
 
-  
+  // After Command Hello
   useEffect(() => {
-  if (slideUp) {
-    setTimeout(() => {
-      onComplete(); // 🔥 switch to homepage
-    }, 1200);
-  }
-}, [slideUp]);
+    if (slideUp) {
+      setTimeout(() => {
+        onComplete(); 
+      }, 1200);
+    }
+  }, [slideUp]);
 
   return (
   <>
