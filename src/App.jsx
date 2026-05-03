@@ -5,19 +5,16 @@ import About from "./pages/about";
 import Navbar from "./components/navbar";
 import Projects from "./pages/projects";
 import Contact from "./pages/contact";
-import Loader from "./components/loading";
-
+import Loader from "./components/loading"
+import { SpeedInsights } from "@vercel/speed-insights/react"
+import { Analytics } from "@vercel/analytics/react"
 
 
 function App() {
   const [loading, setLoading] = useState(true);
 
   return (
-    <div>
-      {loading && <Loader onComplete={() => setLoading(false)} />}
-
-      {!loading && (
-        <>
+    <div className="relative">
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
@@ -26,7 +23,13 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<h1>Page Not Found</h1>} />
           </Routes>
-        </>
+          <SpeedInsights />
+          <Analytics />
+          
+      {loading && (
+        <div className="fixed inset-0 z-50">
+          <Loader onComplete={() => setLoading(false)} />
+        </div>
       )}
     </div>
   );
