@@ -23,13 +23,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<h1>Page Not Found</h1>} />
           </Routes>
-          <SpeedInsights />
-          <Analytics />
-          
-      {loading && (
-        <div className="fixed inset-0 z-50">
-          <Loader onComplete={() => setLoading(false)} />
-        </div>
+        </>
       )}
     </div>
   );
