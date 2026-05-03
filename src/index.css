@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes drop {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(800px) rotate(var(--r));
+    opacity: 0;
+  }
+}
+
+.shard {
+  animation: drop 0.9s forwards cubic-bezier(0.2, 0.8, 0.2, 1);
+}

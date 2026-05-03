@@ -1,21 +1,33 @@
 import { Routes, Route, Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 import Home from "./pages/home";
 import About from "./pages/about";
 import Navbar from "./components/navbar";
 import Projects from "./pages/projects";
 import Contact from "./pages/contact";
+import Loader from "./components/loading";
+
+
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
   return (
-    <div className="p-0">
-      <Navbar/>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="*" element={<h1>Page Not Found</h1>} />
-      </Routes>
+    <div>
+      {loading && <Loader onComplete={() => setLoading(false)} />}
+
+      {!loading && (
+        <>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="*" element={<h1>Page Not Found</h1>} />
+          </Routes>
+        </>
+      )}
     </div>
   );
 }

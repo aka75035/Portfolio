@@ -2,39 +2,34 @@ import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
-    <nav style={styles.nav}>
-      <h2 style={styles.logo}>MyPortfolio</h2>
+    <nav className="w-full fixed top-0 left-0 z-50 backdrop-blur-md bg-white/70 border-b border-gray-200">
 
-      <div style={styles.links}>
-        <Link to="/" style={styles.link}>Home</Link>
-        <Link to="/about" style={styles.link}>About</Link>
-        <Link to="/projects" style={styles.link}>Projects</Link>
-        <Link to="/contact" style={styles.link}>Contact</Link>
+      <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+
+        {/* Logo */}
+        <h1 className="text-xl font-bold text-black">
+          Portfolio
+        </h1>
+
+        {/* Links */}
+        <div className="flex gap-6 text-gray-700 font-medium">
+          <Link to="/" className="hover:text-purple-600 transition">
+            Home
+          </Link>
+          <Link to="/about" className="hover:text-purple-600 transition">
+            About
+          </Link>
+          <Link to="/projects" className="hover:text-purple-600 transition">
+            Projects
+          </Link>
+          <Link to="/contact" className="hover:text-purple-600 transition">
+            Contact
+          </Link>
+        </div>
+
       </div>
     </nav>
   );
 }
-
-const styles = {
-  nav: {
-    display: "flex",
-    justifyContent: "space-between",
-    padding: "15px 30px",
-    background: "#111",
-    color: "#fff",
-    margin: "0px"
-  },
-  logo: {
-    margin: 0,
-  },
-  links: {
-    display: "flex",
-    gap: "20px",
-  },
-  link: {
-    color: "#fff",
-    textDecoration: "none",
-  },
-};
 
 export default Navbar;
