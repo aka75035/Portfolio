@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 export default function useTypeWriter(){
   const [lines, setLines] = useState([]);
 
-  const typeLine = (text, speed = 50) => {
+  const typeLine = (text, speed = 80) => {
       return new Promise((resolve) => {
           let i = 0;
   

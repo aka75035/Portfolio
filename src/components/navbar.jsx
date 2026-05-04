@@ -16,9 +16,6 @@ function Navbar() {
           <Link to="/" className="hover:text-purple-600 transition">
             Home
           </Link>
-          <Link to="/about" className="hover:text-purple-600 transition">
-            About
-          </Link>
           <Link to="/projects" className="hover:text-purple-600 transition">
             Projects
           </Link>

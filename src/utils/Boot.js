@@ -25,5 +25,4 @@ export async function run(typeLine, setDone, intro, about) {
       setDone(true);
     }
 
-    run();
 

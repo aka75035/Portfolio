@@ -25,7 +25,7 @@ function Home() {
     if (hasRun.current) return;
     hasRun.current = true;
 
-    run(typeLine,setDone,intro,about);
+    run(typeLine ,setDone ,intro ,about);
   }, []);
 
   return (
@@ -33,7 +33,7 @@ function Home() {
 
       {/* LEFT SIDE */}
       <div className="w-3/5 bg-black">
-        <About lines = {lines} done={done} into ={intro} about ={about} />
+        <About lines = {lines} done={done} intro ={intro} about ={about} />
       </div>
 
       {/* RIGHT SIDE (FIXED IMAGE) */}
