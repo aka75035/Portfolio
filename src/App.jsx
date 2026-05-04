@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Home from "./pages/home";
 import Navbar from "./components/navbar";
 import Projects from "./pages/projects";
+import InDevelopment from "./components/indevelopment";
 import Contact from "./pages/contact";
 import Loader from "./components/loading"
 import { SpeedInsights } from "@vercel/speed-insights/react"
@@ -23,8 +24,8 @@ function App() {
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/contact" element={<Contact />} />
+            <Route path="/projects" element={<InDevelopment />} />
+            <Route path="/contact" element={<InDevelopment />} />
             <Route path="*" element={<h1>Page Not Found</h1>} />
           </Routes>
     </div>
