@@ -11,8 +11,14 @@ import { Analytics } from "@vercel/analytics/react"
 
 
 function App() {
-  const [loading, setLoading] = useState(true);
-
+  const [loading, setLoading] = useState(false);
+  if (loading) {
+    return (
+      <div className="fixed inset-0 bg-black z-50">
+        <Loader onComplete={() => setLoading(false)} />
+      </div>
+    );
+  }
   return (
     <div className="relative">
           <Navbar />
@@ -23,11 +29,6 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<h1>Page Not Found</h1>} />
           </Routes>
-        {loading && (
-        <div className="fixed inset-0 z-50">
-          <Loader onComplete={() => setLoading(false)} />
-        </div>
-      )}
     </div>
   );
 }

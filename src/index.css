@@ -16,3 +16,13 @@
 .shard {
   animation: drop 0.9s forwards cubic-bezier(0.2, 0.8, 0.2, 1);
 }
+
+/* global.css or index.css */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE/Edge */
+  scrollbar-width: none;     /* Firefox */
+}

@@ -16,3 +16,14 @@ export async function runBoot(typeLine, setShowVisitor){
     await typeLine("Here> ");
 };
 
+export async function run(typeLine, setDone, intro, about) {
+      await typeLine(intro, 80);
+      await new Promise((r) => setTimeout(r, 500));
+      await typeLine(about, 20);
+
+      sessionStorage.setItem("homeTyped", "true"); // ✅ persist
+      setDone(true);
+    }
+
+    run();
+

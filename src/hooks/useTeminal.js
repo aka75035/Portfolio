@@ -16,11 +16,11 @@ export default function useTerminal(onSuccess, external = {}){
         setLines((prev) => [...prev, "Here> " + input, ""]);
 
         if (command === "hello") {
-        setLines((prev) => [
-            ...prev,
-            "Building portfolio","Fetching Data from Resume", "Launching in","5","4","3","2","1",
-            ""
-        ]);
+        // setLines((prev) => [
+        //     ...prev,
+        //     "Building portfolio","Fetching Data from Resume", "Launching in","5","4","3","2","1",
+        //     ""
+        // ]);
         onSuccess?.(); //this Akash writing this trigger loader
         } 
         else {
