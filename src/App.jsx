@@ -24,7 +24,7 @@ function App() {
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/projects" element={<InDevelopment />} />
+            <Route path="/projects" element={<Projects />} />
             <Route path="/contact" element={<InDevelopment />} />
             <Route path="*" element={<h1>Page Not Found</h1>} />
           </Routes>

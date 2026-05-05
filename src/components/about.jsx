@@ -3,7 +3,7 @@ export default function About({lines, done, intro, about}){
     return(
       <div className="flex flex-col h-full overflow-y-auto bg-gray-900 text-white p-10 no-scrollbar">
 
-            <div className="pt-10 mt-14 text-4xl font-mono text-green-400 text-center">
+            <div className="lg:pt-10 mt-14 text-4xl font-mono text-green-400 text-center">
             {done ? (
                 <p>{intro}</p>
             ) : (

@@ -32,12 +32,12 @@ function Home() {
     <div className="flex h-screen">
 
       {/* LEFT SIDE */}
-      <div className="w-3/5 bg-black">
+      <div className="lg:w-3/5 bg-black">
         <About lines = {lines} done={done} intro ={intro} about ={about} />
       </div>
 
       {/* RIGHT SIDE (FIXED IMAGE) */}
-      <div className="w-2/5 fixed right-0 top-0 h-screen p-0">
+      <div className="lg:block lg:w-2/5 hidden fixed right-0 top-0 h-screen p-0">
         <Profile/>
       </div>
 
