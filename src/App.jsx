@@ -8,6 +8,7 @@ import Contact from "./pages/contact";
 import Loader from "./components/loading"
 import { SpeedInsights } from "@vercel/speed-insights/react"
 import { Analytics } from "@vercel/analytics/react"
+import Certificates from "./pages/certificates";
 
 
 function App() {
@@ -25,7 +26,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/projects" element={<Projects />} />
-            <Route path="/contact" element={<InDevelopment />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/certificates" element={<Certificates />} />
             <Route path="*" element={<h1>Page Not Found</h1>} />
           </Routes>
     </div>

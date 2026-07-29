@@ -19,6 +19,9 @@ function Navbar() {
           <Link to="/projects" className="hover:text-purple-600 transition">
             Projects
           </Link>
+          <Link to="/certificates" className="hover:text-purple-600 transition">
+            My Certificates
+          </Link>
           <Link to="/contact" className="hover:text-purple-600 transition">
             Contact
           </Link>

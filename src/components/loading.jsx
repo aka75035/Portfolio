@@ -24,8 +24,27 @@ function Loader({ onComplete }) {
 
   //RunBoot and Show Screen
   useEffect(() => {
-    runBoot(typeLine,setShowVisitor);
+    const bootCompleted = sessionStorage.getItem("bootCompleted");
+
+    if (bootCompleted) {
+      onComplete();
+      return;
+    }
+
+    runBoot(typeLine, setShowVisitor);
   }, []);
+
+  useEffect(() => {
+    if (!slideUp) return;
+
+    sessionStorage.setItem("bootCompleted", "true");
+
+    const timer = setTimeout(() => {
+      onComplete();
+    }, 1200);
+
+    return () => clearTimeout(timer);
+  }, [slideUp, onComplete]);
 
   // After Command Hello
   useEffect(() => {

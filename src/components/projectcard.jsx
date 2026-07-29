@@ -71,7 +71,7 @@ function ProjectCard({ title, desc, tech, GitHub, link, clicked, setClicked }) {
   )}
 
   {/* ✅ LINKS ALWAYS VISIBLE */}
-  <a
+  {link && <a
     href={link}
     onClick={(e) => {
       e.preventDefault();
@@ -81,6 +81,7 @@ function ProjectCard({ title, desc, tech, GitHub, link, clicked, setClicked }) {
   >
     View Live Project →
   </a>
+  }
 
   <a
     href={GitHub}

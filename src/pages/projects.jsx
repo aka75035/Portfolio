@@ -5,38 +5,80 @@ import { projectsData } from "../utils/project";
 
 function Projects() {
   const { lines, typeLine } = useTypeWriter();
+
   const [finished, setFinished] = useState(false);
-  const started = useRef(false);
   const [clicked, setClicked] = useState(null);
+
+  const started = useRef(false);
 
   useEffect(() => {
     if (started.current) return;
+
     started.current = true;
 
+    let timer;
+
     async function run() {
-      await typeLine("These are the projects I have built");
-      
-    setTimeout(() => {
-      setFinished(true);
-    }, 500);
+      await typeLine(
+        "These are some of the projects I have built."
+      );
+
+      timer = setTimeout(() => {
+        setFinished(true);
+      }, 500);
     }
+
     run();
+
+    return () => {
+      clearTimeout(timer);
+    };
   }, []);
 
-
   return (
-  <div className="bg-black min-h-screen">
-    <div className="lg:pt-10 fixed top-5 lg:top-0 left-0 right-0 mt-14 lg:text-4xl text-xl font-mono text-green-400 text-center z-10">
-      {lines.map((line, index) => (
-        <p key={index}>{line}</p>
-      ))}
-    </div>
-    <div className="lg:pt-48 pt-36 px-6 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-    {finished && projectsData.map((p, index)=>(
-      <ProjectCard key={index} {...p} clicked={clicked} setClicked={setClicked}/>
-    ))}
-    </div>
-  </div>
+    <main className="min-h-screen bg-black text-white">
+
+      {/* Terminal Heading */}
+      <section className="px-6 pt-24 text-center lg:pt-28">
+
+        <div className="min-h-[60px] font-mono text-xl text-green-400 md:text-2xl lg:text-4xl">
+          {lines.map((line, index) => (
+            <p key={index}>
+
+              {line}
+
+              {index === lines.length - 1 && !finished && (
+                <span className="ml-1 animate-pulse">
+                  _
+                </span>
+              )}
+            </p>
+          ))}
+        </div>
+
+      </section>
+
+      {/* Projects */}
+      <section className="mx-auto max-w-7xl px-5 pb-20 pt-14 sm:px-6 lg:px-8">
+
+        {finished && (
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+
+            {projectsData.map((project, index) => (
+              <ProjectCard
+                key={project.GitHub || project.title || index}
+                {...project}
+                clicked={clicked}
+                setClicked={setClicked}
+              />
+            ))}
+
+          </div>
+        )}
+
+      </section>
+
+    </main>
   );
 }
 
